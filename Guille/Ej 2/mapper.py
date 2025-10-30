@@ -1,4 +1,5 @@
 #!/usr/bin/python
+# -*- coding: utf-8 -*-
 # mapper.py para Job 1: Contar accesos a recursos
 # Parsea Common Log Format y extrae el recurso (sin query string)
 
@@ -17,7 +18,7 @@ for line in sys.stdin:
         # Extraer el recurso (URL solicitada)
         resource = match.group(4)
 
-        # Remover el query string (lo que viene después de ?)
+        # Remover el query string (lo que viene despuï¿½s de ?)
         if '?' in resource:
             resource = resource.split('?')[0]
 

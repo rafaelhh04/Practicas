@@ -1,4 +1,5 @@
 #!/usr/bin/python
+# -*- coding: utf-8 -*-
 # mapper.py para Distributed Grep
 # Grep distribuido: buscar líneas que contienen una palabra específica (-iw)
 

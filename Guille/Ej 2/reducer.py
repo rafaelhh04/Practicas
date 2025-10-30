@@ -1,4 +1,5 @@
 #!/usr/bin/python
+# -*- coding: utf-8 -*-
 # reducer.py para Job 1: Sumar accesos por recurso
 # Suma el numero de veces que se accedio a cada recurso
 

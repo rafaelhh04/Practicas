@@ -1,4 +1,5 @@
 #!/usr/bin/python
+# -*- coding: utf-8 -*-
 # mapper2.py para Job 2: Preparar datos para Top 100
 # Lee la salida del Job 1 (recurso TAB count) y la prepara para el reducer
 

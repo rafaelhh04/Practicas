@@ -1,4 +1,5 @@
 #!/usr/bin/python
+# -*- coding: utf-8 -*-
 # reducer2.py para Job 2: Encontrar Top 100 recursos
 # Mantiene los 100 recursos más accedidos
 
