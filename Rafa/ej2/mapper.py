@@ -7,4 +7,7 @@ top_items=[]
 
 for line in sys.stdin:
     line=line.strip()
-    parts=linl
+    parts= line.split(",")
+    
+    
+    
