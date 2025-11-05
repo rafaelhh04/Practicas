@@ -1,6 +1,6 @@
 #!/usr/bin/python
-# reducer.py para Job 1: Calcular promedio de valoración por película
-# Calcula el rating promedio de cada película
+# reducer.py para Job 1: Calcular promedio de valoraciin por pelicula
+# Calcula el rating promedio de cada pelicula
 
 import sys
 
@@ -17,12 +17,12 @@ for line in sys.stdin:
     except:
         continue
 
-    # Si es la misma película, acumular
+    # Si es la misma pelicula, acumular
     if current_movie == movie_id:
         total_rating += rating
         count += 1
     else:
-        # Nueva película: emitir el promedio de la película anterior
+        # Nueva pelicula: emitir el promedio de la pelicula anterior
         if current_movie:
             average = total_rating / count
             print("{}\t{}".format(current_movie, average))
@@ -31,7 +31,7 @@ for line in sys.stdin:
         total_rating = rating
         count = 1
 
-# Emitir la última película
+# Emitir la iltima pelicula
 if current_movie:
     average = total_rating / count
     print("{}\t{}".format(current_movie, average))
