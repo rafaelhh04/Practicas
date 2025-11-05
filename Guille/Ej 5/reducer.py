@@ -31,7 +31,7 @@ for line in sys.stdin:
         total_mass = mass
         count = 1
 
-# Emitir el último tipo
+# Emitir el ultimo tipo
 if current_type:
     average = total_mass / count
     print("{}\t{}".format(current_type, average))

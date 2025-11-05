@@ -4,7 +4,7 @@
 
 import sys
 
-# Saltar la primera línea (encabezado)
+# Saltar la primera linea (encabezado)
 first_line = True
 
 for line in sys.stdin:
@@ -15,14 +15,14 @@ for line in sys.stdin:
     line = line.strip()
     fields = line.split(',')
 
-    # CSV format (puede variar, típicamente):
+    # CSV format (puede variar, tipicamente):
     # name,id,nametype,recclass,mass (g),fall,year,reclat,reclong,GeoLocation
     # Buscar recclass (tipo) y mass
-    # Formato común: columnas pueden estar en diferentes posiciones
+    # Formato comun: columnas pueden estar en diferentes posiciones
 
     if len(fields) >= 5:
         try:
-            # Intentar parsear asumiendo formato estándar
+            # Intentar parsear asumiendo formato estï¿½ndar
             # name, id, nametype, recclass, mass...
             recclass = fields[3].strip()  # Tipo de meteorito
             mass_str = fields[4].strip()  # Masa en gramos
