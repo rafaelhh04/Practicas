@@ -3,29 +3,36 @@
 # Procesa datos de NASA Meteorite Landings (CSV)
 
 import sys
+import csv
+
+print("DEBUG: Mapper iniciado", file=sys.stderr)
 
 # Saltar la primera linea (encabezado)
-first_line = True
+reader=csv.reader(sys.stdin, delimiter=';')# Saltar header si existe
+try:
+    header = next(reader)  # Omitir primera línea
+    print("DEBUG: Header encontrado: {}".format(header), file=sys.stderr)
+except StopIteration:
+    print("DEBUG: No hay header", file=sys.stderr)
+    pass
 
-for line in sys.stdin:
-    if first_line:
-        first_line = False
-        continue
 
-    line = line.strip()
-    fields = line.split(',')
+
+for line in reader:
+    
 
     # CSV format (puede variar, tipicamente):
     # name,id,nametype,recclass,mass (g),fall,year,reclat,reclong,GeoLocation
     # Buscar recclass (tipo) y mass
     # Formato comun: columnas pueden estar en diferentes posiciones
 
-    if len(fields) >= 5:
+    if len(line) >= 5:
         try:
             # Intentar parsear asumiendo formato est�ndar
             # name, id, nametype, recclass, mass...
-            recclass = fields[3].strip()  # Tipo de meteorito
-            mass_str = fields[4].strip()  # Masa en gramos
+            recclass = line[3].strip()  # Tipo de meteorito
+            mass_str = line[4].strip()  # Masa en gramos
+
 
             # Ignorar si no tiene masa
             if mass_str and mass_str != '' and mass_str.lower() != 'null':
@@ -33,5 +40,8 @@ for line in sys.stdin:
 
                 # Emitir: tipo TAB masa
                 print("{}\t{}".format(recclass, mass))
-        except:
+                processed_count += 1
+            
+        except Exception as e:
             continue
+ 
