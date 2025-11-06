@@ -1,26 +1,26 @@
 #!/usr/bin/python
-# mapper.py para Job 1: Calcular valoración promedio por película
+# mapper.py para Job 1: Calcular valoracion promedio por pelicula
 # Procesa datos de MovieLens (ratings.csv)
 
 import sys
+import csv
 
-# Saltar la primera línea (encabezado)
-first_line = True
+# Saltar la primera linea (encabezado)
+reader = csv.reader(sys.stdin)
 
-for line in sys.stdin:
-    if first_line:
-        first_line = False
-        continue
-
-    line = line.strip()
-    fields = line.split(',')
+# Saltar header si existe
+try:
+    next(reader)  # Omitir primera lÃ­nea
+except StopIteration:
+    pass
+for line in reader:
 
     # CSV format: userId,movieId,rating,timestamp
     # Ejemplo: 1,1,4.0,964982703
-    if len(fields) >= 3:
+    if len(line) >= 3:
         try:
-            movie_id = fields[1]
-            rating = float(fields[2])
+            movie_id = line[1]
+            rating = float(line[2])
 
             # Emitir: movieId TAB rating
             print("{}\t{}".format(movie_id, rating))
