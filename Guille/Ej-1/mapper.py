@@ -7,7 +7,6 @@ import sys
 import re
 
 # La palabra a buscar se pasa como argumento
-# Usar con: -mapper "mapper.py zoroaster"
 if len(sys.argv) < 2:
     sys.exit("Usage: mapper.py <word>")
 

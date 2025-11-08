@@ -1,18 +1,16 @@
-#!/usr/bin/python
-# mapper.py para Precio promedio de acciones por año
+#!/usr/bin/env python3
+# mapper.py para Precio promedio de acciones por anyo
 # Procesa datos de Yahoo Finance (CSV)
 
 import sys
 
-# Saltar la primera línea (encabezado)
-first_line = True
-
 for line in sys.stdin:
-    if first_line:
-        first_line = False
-        continue
-
     line = line.strip()
+    
+    # Saltar lineas vacÃ­as
+    if not line:
+        continue
+    
     fields = line.split(',')
 
     # CSV format: Date,Open,High,Low,Close,Volume,Adj Close
@@ -20,12 +18,18 @@ for line in sys.stdin:
     if len(fields) >= 7:
         try:
             date = fields[0]  # Formato: YYYY-MM-DD
-            year = date.split('-')[0]  # Extraer el año
+            
+            # Saltar el encabezado (si contiene "Date")
+            if date.lower() == 'date':
+                continue
+            
+            year = date.split('-')[0]  # Extraer el anyo
 
             # Usar el precio de cierre ajustado (Adj Close)
             adj_close = float(fields[6])
 
-            # Emitir: año TAB precio
+            # Emitir: anyo TAB precio
             print("{}\t{}".format(year, adj_close))
-        except:
+        except (ValueError, IndexError):
+            # Ignorar lineas con formato incorrecto
             continue

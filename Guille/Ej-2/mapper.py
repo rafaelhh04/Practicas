@@ -18,7 +18,7 @@ for line in sys.stdin:
         # Extraer el recurso (URL solicitada)
         resource = match.group(4)
 
-        # Remover el query string (lo que viene despu�s de ?)
+        # Remover el query string (lo que viene despues de ?)
         if '?' in resource:
             resource = resource.split('?')[0]
 

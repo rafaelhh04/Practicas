@@ -1,6 +1,6 @@
 #!/usr/bin/python
-# reducer.py para calcular precio promedio por año
-# Calcula el promedio de los precios por año
+# reducer.py para calcular precio promedio por anyo
+# Calcula el promedio de los precios por anyo
 
 import sys
 
@@ -17,12 +17,12 @@ for line in sys.stdin:
     except:
         continue
 
-    # Si es el mismo año, acumular
+    # Si es el mismo anyo, acumular
     if current_year == year:
         total_price += price
         count += 1
     else:
-        # Nuevo año: emitir el promedio del año anterior
+        # Nuevo anyo: emitir el promedio del anyo anterior
         if current_year:
             average = total_price / count
             print("{}\t{}".format(current_year, average))
@@ -31,7 +31,7 @@ for line in sys.stdin:
         total_price = price
         count = 1
 
-# Emitir el último año
+# Emitir el ultimo anyo
 if current_year:
     average = total_price / count
     print("{}\t{}".format(current_year, average))

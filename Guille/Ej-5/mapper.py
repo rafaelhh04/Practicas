@@ -1,47 +1,27 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 # mapper.py para calcular masa promedio de meteoritos por tipo
-# Procesa datos de NASA Meteorite Landings (CSV)
 
 import sys
 import csv
 
-print("DEBUG: Mapper iniciado", file=sys.stderr)
+reader = csv.reader(sys.stdin, delimiter=';') 
 
-# Saltar la primera linea (encabezado)
-reader=csv.reader(sys.stdin, delimiter=';')# Saltar header si existe
+# Saltar header
 try:
-    header = next(reader)  # Omitir primera línea
-    print("DEBUG: Header encontrado: {}".format(header), file=sys.stderr)
+    next(reader)
 except StopIteration:
-    print("DEBUG: No hay header", file=sys.stderr)
     pass
 
-
-
 for line in reader:
-    
-
-    # CSV format (puede variar, tipicamente):
-    # name,id,nametype,recclass,mass (g),fall,year,reclat,reclong,GeoLocation
-    # Buscar recclass (tipo) y mass
-    # Formato comun: columnas pueden estar en diferentes posiciones
-
+    # CSV format: name;id;nametype;recclass;mass (g);fall;year;reclat;reclong;GeoLocation
     if len(line) >= 5:
         try:
-            # Intentar parsear asumiendo formato est�ndar
-            # name, id, nametype, recclass, mass...
-            recclass = line[3].strip()  # Tipo de meteorito
-            mass_str = line[4].strip()  # Masa en gramos
-
+            recclass = line[3].strip()
+            mass_str = line[4].strip()
 
             # Ignorar si no tiene masa
-            if mass_str and mass_str != '' and mass_str.lower() != 'null':
+            if mass_str and mass_str.lower() not in ['', 'null']:
                 mass = float(mass_str)
-
-                # Emitir: tipo TAB masa
                 print("{}\t{}".format(recclass, mass))
-                processed_count += 1
-            
-        except Exception as e:
+        except:
             continue
- 

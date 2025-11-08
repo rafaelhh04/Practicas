@@ -1,6 +1,5 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 # reducer.py para calcular masa promedio por tipo de meteorito
-# Calcula el promedio de masa para cada tipo (recclass)
 
 import sys
 
@@ -17,21 +16,18 @@ for line in sys.stdin:
     except:
         continue
 
-    # Si es el mismo tipo, acumular
     if current_type == recclass:
         total_mass += mass
         count += 1
     else:
-        # Nuevo tipo: emitir el promedio del tipo anterior
         if current_type:
             average = total_mass / count
-            print("{}\t{}".format(current_type, average))
+            print("{}\t{:.2f}".format(current_type, average))
 
         current_type = recclass
         total_mass = mass
         count = 1
 
-# Emitir el ultimo tipo
 if current_type:
     average = total_mass / count
-    print("{}\t{}".format(current_type, average))
+    print("{}\t{:.2f}".format(current_type, average))
